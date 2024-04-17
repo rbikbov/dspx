@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.4.0",
+    "generators": {
+      "v3": {
+        "generatorName": "javascript",
+        "inputSpec": "https://dispex.org/api/vtest/docs/vtest/swagger.json",
+        "output": "src/api/codegen",
+        "additionalProperties": {
+          "usePromises": true,
+          "useES6": true,
+          "modelPropertyNaming": "camelCase"
+        }
+      }
+    }
+  }
+}
