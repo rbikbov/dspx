@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .eslintcache
+src/api/codegen
 
 # Editor directories and files
 .vscode/*
