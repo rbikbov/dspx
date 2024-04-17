@@ -6,7 +6,7 @@
     "generators": {
       "v3": {
         "generatorName": "javascript",
-        "inputSpec": "https://dispex.org/api/vtest/docs/vtest/swagger.json",
+        "inputSpec": "src/api/swagger.json",
         "output": "src/api/codegen",
         "additionalProperties": {
           "usePromises": true,
