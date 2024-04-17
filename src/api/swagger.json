@@ -514,31 +514,31 @@
       "HousingStockDto": {
         "type": "object",
         "properties": {
-          "AddressId": {
+          "addressId": {
             "type": "integer",
             "format": "int32"
           },
-          "StreetId": {
+          "streetId": {
             "type": "integer",
             "format": "int32"
           },
-          "HouseId": {
+          "houseId": {
             "type": "integer",
             "format": "int32"
           },
-          "StreetName": {
+          "streetName": {
             "type": "string",
             "nullable": true
           },
-          "Building": {
+          "building": {
             "type": "string",
             "nullable": true
           },
-          "Corpus": {
+          "corpus": {
             "type": "string",
             "nullable": true
           },
-          "Flat": {
+          "flat": {
             "type": "string",
             "nullable": true
           }
@@ -548,23 +548,23 @@
       "ClientDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "Phone": {
+          "phone": {
             "type": "string",
             "nullable": true
           },
-          "Email": {
+          "email": {
             "type": "string",
             "nullable": true
           },
-          "BindId": {
+          "bindId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -575,16 +575,16 @@
       "ResultDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "Result": {
+          "result": {
             "type": "string",
             "nullable": true
           },
-          "Message": {
+          "message": {
             "type": "string",
             "nullable": true
           }
@@ -594,11 +594,11 @@
       "BindClientDto": {
         "type": "object",
         "properties": {
-          "AddressId": {
+          "addressId": {
             "type": "integer",
             "format": "int32"
           },
-          "ClientId": {
+          "clientId": {
             "type": "integer",
             "format": "int32"
           }
@@ -608,15 +608,15 @@
       "BindArrearDto": {
         "type": "object",
         "properties": {
-          "AddressId": {
+          "addressId": {
             "type": "integer",
             "format": "int32"
           },
-          "TypeId": {
+          "typeId": {
             "type": "integer",
             "format": "int32"
           },
-          "Account": {
+          "account": {
             "type": "string",
             "nullable": true
           }
@@ -626,11 +626,11 @@
       "AccountTypeDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true
           }
@@ -640,15 +640,15 @@
       "StreetPrefixDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "ShortName": {
+          "shortName": {
             "type": "string",
             "nullable": true
           }
@@ -658,26 +658,26 @@
       "StreetDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Prefix": {
+          "prefix": {
             "$ref": "#/components/schemas/StreetPrefixDto"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "CityId": {
+          "cityId": {
             "type": "integer",
             "format": "int32"
           },
-          "City": {
+          "city": {
             "type": "string",
             "nullable": true
           },
-          "NameWithPrefix": {
+          "nameWithPrefix": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -688,7 +688,7 @@
       "WebHouseTypeDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
@@ -702,15 +702,15 @@
       "WebHouseDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "Type": {
+          "type": {
             "$ref": "#/components/schemas/WebHouseTypeDto"
           }
         },
@@ -719,23 +719,23 @@
       "FlatDto": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "Flat": {
+          "flat": {
             "type": "string",
             "nullable": true
           },
-          "TypeId": {
+          "typeId": {
             "type": "integer",
             "format": "int32"
           },
-          "TypeName": {
+          "typeName": {
             "type": "string",
             "nullable": true
           },
-          "Name": {
+          "name": {
             "type": "string",
             "nullable": true,
             "readOnly": true
