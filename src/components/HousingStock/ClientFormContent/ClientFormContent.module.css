@@ -1,0 +1,12 @@
+.clientFormContent {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 1em;
+}
+.clientFormContent__actions {
+  display: flex;
+  justify-content: space-between;
+}
+.clientFormContent__error {
+  color: red;
+}

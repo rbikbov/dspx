@@ -1,0 +1,21 @@
+.flatItem {
+  min-width: 3em;
+}
+
+.flatItem_house,
+.flatItem_entrance {
+  width: 100%;
+  flex-shrink: 0;
+  justify-self: stretch;
+}
+
+.flatItem_active .flatItem__btn {
+  background-color: blue;
+  color: #ffffff;
+}
+
+.flatItem__btn {
+  width: 100%;
+  padding: 4px;
+  font-size: 1em;
+}

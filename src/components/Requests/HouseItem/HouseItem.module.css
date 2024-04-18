@@ -1,0 +1,7 @@
+.houseItem__flats {
+  margin-left: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5em;
+}

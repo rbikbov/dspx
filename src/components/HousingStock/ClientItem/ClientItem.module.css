@@ -1,0 +1,25 @@
+.clientItem {
+  height: 200px;
+  border-radius: 0.5em;
+  background-color: #1a1a1a;
+  padding: 0.5em;
+  word-break: break-all;
+  font-size: 0.875em;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+@media (prefers-color-scheme: light) {
+  .clientItem {
+    background-color: #d9d9d9;
+  }
+}
+
+.clientItem__actions {
+  margin-top: auto;
+}
+
+.clientItem__error {
+  color: red;
+}

@@ -1,0 +1,15 @@
+.collapsible {
+  margin-left: 1em;
+}
+.collapsible__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.collapsible__top__title {
+  margin: 0;
+}
+.collapsible__top__btn {
+  padding: 0.5em;
+  background-color: unset;
+}
