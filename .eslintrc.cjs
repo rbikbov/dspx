@@ -10,7 +10,7 @@ module.exports = {
     // Make sure it's always the last config, so it gets the chance to override other configs.
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'src/api/codegen'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'react', 'prettier'],
