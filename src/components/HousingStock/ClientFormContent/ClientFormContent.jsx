@@ -49,7 +49,8 @@ export const ClientFormContent = ({ status, onSubmit, formError }) => {
       email: email.value,
     })
       .then(() => resetForm())
-      .catch(console.warn)
+      // ignoring the error thrown as it is only thrown to prevent a form reset
+      .catch(() => {})
   }
 
   return (
@@ -67,7 +68,7 @@ export const ClientFormContent = ({ status, onSubmit, formError }) => {
         value={name.value}
         onChange={name.onChange}
         onBlur={name.onBlur}
-        errors={name.errors || ['test']}
+        errors={name.errors}
         isDirty={name.isDirty}
       />
       <FormField
