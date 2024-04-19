@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { createClient, bindClientToAddress } from '@/api'
@@ -7,8 +7,6 @@ import { useAsync, AsyncStatuses } from '@/hooks/useAsync'
 import { handlePromise } from '@/utils/promises/handlePromise'
 
 import { ClientFormContent } from '@/components/HousingStock/ClientFormContent/ClientFormContent'
-
-const MemoizedClientFormContent = memo(ClientFormContent)
 
 export const ClientForm = ({ flatDto, onSuccess }) => {
   const createAndBindClient = async (formData) => {
@@ -57,7 +55,7 @@ export const ClientForm = ({ flatDto, onSuccess }) => {
   )
 
   return (
-    <MemoizedClientFormContent
+    <ClientFormContent
       status={createAndBindClientStatus}
       onSubmit={onSubmit}
       formError={createAndBindClientError}
