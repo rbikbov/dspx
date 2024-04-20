@@ -14,16 +14,16 @@ import styles from './Clients.module.css'
 export const Clients = ({ flatDto }) => {
   const [clientsList, setClientsList] = useState([])
 
-  const wrappedFetchFlatClients = async () => {
+  const wrappedFetchFlatClients = useCallback(async () => {
     const result = await fetchFlatClients(flatDto.id)
     setClientsList(result)
-  }
+  }, [flatDto.id])
 
   const {
     call: fetchClients,
     status: clientsStatus,
     error: clientsError,
-  } = useAsync(wrappedFetchFlatClients, [], [flatDto.id])
+  } = useAsync(wrappedFetchFlatClients, [], [])
 
   useEffect(() => {
     fetchClients()

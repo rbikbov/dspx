@@ -15,20 +15,23 @@ export function useAsync(callback, initialResult = null, dependencies = []) {
   const [error, setError] = useState('')
   const [result, setResult] = useState(initialResult)
 
-  const call = useCallback(async (...args) => {
-    setStatus(AsyncStatuses.pending)
-    setError('')
-    setResult(initialResult)
-    const { error, result } = await handlePromise(callback(...args))
-    if (error) {
-      setStatus(AsyncStatuses.error)
-      setError(error)
-    } else {
-      setStatus(AsyncStatuses.success)
-      setResult(result)
-    }
-    return { error, result }
-  }, dependencies)
+  const call = useCallback(
+    async (...args) => {
+      setStatus(AsyncStatuses.pending)
+      setError('')
+      setResult(initialResult)
+      const { error, result } = await handlePromise(callback(...args))
+      if (error) {
+        setStatus(AsyncStatuses.error)
+        setError(error)
+      } else {
+        setStatus(AsyncStatuses.success)
+        setResult(result)
+      }
+      return { error, result }
+    },
+    [callback, JSON.stringify(initialResult), ...dependencies],
+  )
 
   return { call, status, error, result }
 }
