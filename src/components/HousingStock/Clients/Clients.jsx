@@ -43,8 +43,9 @@ export const Clients = ({ flatDto }) => {
         <div
           className={[
             styles.clientsTop__statuses,
-            clientsStatus === AsyncStatuses.pending
-              ? styles.clientsTop__statuses_loading
+            clientsStatus === AsyncStatuses.pending ||
+            clientsStatus === AsyncStatuses.error
+              ? styles.clientsTop__statuses_bg
               : '',
             clientsStatus === AsyncStatuses.success &&
             Array.isArray(clientsList) &&
