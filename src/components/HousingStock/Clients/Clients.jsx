@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { fetchFlatClients } from '@/api'
 import { FlatDto } from '@/api/codegen/src'
-import { useAsync } from '@/hooks/useAsync'
+import { AsyncStatuses, useAsync } from '@/hooks/useAsync'
 
 import { ListStatuses } from '@/components/UI/ListStatuses/ListStatuses'
 import { ClientItem } from '@/components/HousingStock/ClientItem/ClientItem'
@@ -39,26 +39,45 @@ export const Clients = ({ flatDto }) => {
 
   return (
     <>
-      {flatDto?.id && (
-        <ListStatuses
-          status={clientsStatus}
-          error={clientsError}
-          list={clientsList}
-        />
-      )}
-      {flatDto?.id &&
-        Array.isArray(clientsList) &&
-        Boolean(clientsList.length) && (
-          <div className={styles.clientsList}>
-            {clientsList.map((clientDto) => (
-              <ClientItem
-                key={clientDto.id}
-                clientDto={clientDto}
-                onRemoveSuccess={onClientRemoveSuccess}
-              />
-            ))}
-          </div>
-        )}
+      <div className={styles.clientsTop}>
+        <div
+          className={[
+            styles.clientsTop__statuses,
+            clientsStatus === AsyncStatuses.pending ||
+            clientsStatus === AsyncStatuses.error
+              ? styles.clientsTop__statuses_bg
+              : '',
+            clientsStatus === AsyncStatuses.success &&
+            Array.isArray(clientsList) &&
+            Boolean(clientsList.length)
+              ? styles.clientsTop__statuses_hidden
+              : '',
+          ]
+            .join(' ')
+            .trim()}
+        >
+          {flatDto?.id && (
+            <ListStatuses
+              status={clientsStatus}
+              error={clientsError}
+              list={clientsList}
+            />
+          )}
+        </div>
+        {flatDto?.id &&
+          Array.isArray(clientsList) &&
+          Boolean(clientsList.length) && (
+            <div className={styles.clientsList}>
+              {clientsList.map((clientDto) => (
+                <ClientItem
+                  key={clientDto.id}
+                  clientDto={clientDto}
+                  onRemoveSuccess={onClientRemoveSuccess}
+                />
+              ))}
+            </div>
+          )}
+      </div>
       <div className={styles.clientsBottom}>
         <h3>Добавить клиента</h3>
         <ClientForm
