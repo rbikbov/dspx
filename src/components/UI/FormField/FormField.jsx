@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { memo, useId } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './FormField.module.css'
@@ -53,3 +53,5 @@ FormField.defaultProps = {
   tag: 'input',
   errors: [],
 }
+
+export const MemoizedFormField = memo(FormField)

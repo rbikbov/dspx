@@ -10,7 +10,7 @@ import {
 } from '@/utils/validators'
 import { getErrorText } from '@/utils/unwrapError'
 
-import { FormField } from '@/components/UI/FormField/FormField'
+import { MemoizedFormField as FormField } from '@/components/UI/FormField/FormField'
 
 import styles from './ClientFormContent.module.css'
 
@@ -43,14 +43,15 @@ export const ClientFormContent = ({ status, onSubmit, formError }) => {
     if (isSubmitDisabled) {
       return
     }
-    onSubmit(e, {
-      name: name.value,
-      phone: phone.value,
-      email: email.value,
-    })
-      .then(() => resetForm())
-      // ignoring the error thrown as it is only thrown to prevent a form reset
-      .catch(() => {})
+    onSubmit(
+      e,
+      {
+        name: name.value,
+        phone: phone.value,
+        email: email.value,
+      },
+      resetForm,
+    )
   }
 
   return (

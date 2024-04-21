@@ -3,38 +3,36 @@ import PropTypes from 'prop-types'
 
 import { createClient, bindClientToAddress } from '@/api'
 import { BindClientDto, ClientDto, FlatDto } from '@/api/codegen/src'
-import { useAsync, AsyncStatuses } from '@/hooks/useAsync'
+import { useAsync } from '@/hooks/useAsync'
 import { handlePromise } from '@/utils/promises/handlePromise'
 
 import { ClientFormContent } from '@/components/HousingStock/ClientFormContent/ClientFormContent'
 
-export const ClientForm = ({ flatDto, onSuccess }) => {
-  const createAndBindClient = async (formData) => {
-    const requestClientDto = ClientDto.constructFromObject(formData)
-    const createClientRequest = await handlePromise(
-      createClient(requestClientDto),
-    )
+const createAndBindClient = async (formData, flatDto) => {
+  const requestClientDto = ClientDto.constructFromObject(formData)
+  const createClientRequest = await handlePromise(
+    createClient(requestClientDto),
+  )
 
-    if (createClientRequest.error) {
-      throw createClientRequest.error
-    }
-
-    const bindClientRequest = await handlePromise(
-      bindClientToAddress(
-        BindClientDto.constructFromObject({
-          addressId: flatDto.id,
-          clientId: createClientRequest.result.id,
-        }),
-      ),
-    )
-
-    if (bindClientRequest.error) {
-      throw bindClientRequest.error
-    }
-
-    onSuccess()
+  if (createClientRequest.error) {
+    throw createClientRequest.error
   }
 
+  const bindClientRequest = await handlePromise(
+    bindClientToAddress(
+      BindClientDto.constructFromObject({
+        addressId: flatDto.id,
+        clientId: createClientRequest.result.id,
+      }),
+    ),
+  )
+
+  if (bindClientRequest.error) {
+    throw bindClientRequest.error
+  }
+}
+
+export const ClientForm = ({ flatDto, onSuccess }) => {
   const {
     call: callCreateAndBindClient,
     status: createAndBindClientStatus,
@@ -42,16 +40,15 @@ export const ClientForm = ({ flatDto, onSuccess }) => {
   } = useAsync(createAndBindClient, [], [flatDto.id])
 
   const onSubmit = useCallback(
-    async (_, formData) => {
-      if (createAndBindClientStatus === AsyncStatuses.pending) {
+    async (_, formData, resetForm) => {
+      const { error } = await callCreateAndBindClient(formData, flatDto)
+      if (error) {
         return
       }
-      const { error } = await callCreateAndBindClient(formData)
-      if (error) {
-        throw error
-      }
+      resetForm()
+      onSuccess()
     },
-    [callCreateAndBindClient, createAndBindClientStatus],
+    [callCreateAndBindClient, flatDto, onSuccess],
   )
 
   return (
